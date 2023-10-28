@@ -1,22 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
-
-namespace Ad.TradeIn.Infrastructure.Extensions;
+﻿namespace Ad.TradeIn.Infrastructure.Extensions;
 
 public static class ConfigureServices
 {
-    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
-    {
-            services.AddDefaultIdentity<ApplicationUser>()
-        .AddEntityFrameworkStores<ApplicationDbContext>();
+    //public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
+    //{
+    //    if (configuration.GetValue<bool>("UseInMemoryDatabase"))
+    //    {
+    //        services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("TradeIn"));
+    //    }
+    //    else
+    //    {
+    //        services.AddDbContext<ApplicationDbContext>(options => options
+    //        //.UseLazyLoadingProxies()
+    //        .UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
+    //                b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+    //    }
 
-        services.AddIdentityServer()
-            .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+    //    services.AddDefaultIdentity<ApplicationUser>()
+    //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
-    }
+    //    services.AddIdentityServer()
+    //        .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+
+    //}
 }

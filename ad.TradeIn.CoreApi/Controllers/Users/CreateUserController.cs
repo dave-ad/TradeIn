@@ -1,9 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace Ad.TradeIn.CoreApi.Controllers.Users
+﻿namespace Ad.TradeIn.CoreApi.Controllers.Users
 {
-    public class CreateUserController
+    [Route("api/{[controler]")]
+    [ApiController]
+    public class CreateUserController :  ControllerBase
     {
+        private readonly APIDbContext _context;
+
+        public CreateUserController(APIDbContext context)
+        {
+            _context = context;
+        }
+
+        // POST: api/SignUp
         [HttpPost("signup")]
         public async Task<IActionResult> SignUp([FromBody] CreateUserCommand command)
         {
