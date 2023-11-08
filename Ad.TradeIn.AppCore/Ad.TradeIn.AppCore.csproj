@@ -7,8 +7,20 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>1</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningLevel>1</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\david.aderibigbe\.nuget\packages\microsoft.net.compilers\1.0.0\build\..\tools\**" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ad.TradeIn.AppDomain\Ad.TradeIn.AppDomain.csproj" />
+    <ProjectReference Include="..\Ad.TradeIn.Commons\Ad.TradeIn.Commons.csproj" />
     <ProjectReference Include="..\Ad.TradeIn.Infrastructure\Ad.TradeIn.Infrastructure.csproj" />
   </ItemGroup>
 

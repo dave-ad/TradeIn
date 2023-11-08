@@ -18,6 +18,7 @@ public class UserModel
     public string LastName { get; set; }
 
     [Column(TypeName = "nvarchar(50)")]
+    [EmailAddress]
     public string Email { get; set; }
 
     [Column(TypeName = "nvarchar(10)")]

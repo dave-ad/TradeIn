@@ -1,31 +1,38 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace Ad.TradeIn.AppCore.Users;
 
-namespace Ad.TradeIn.AppCore.Users
+public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, UserModel>
 {
-    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, ValidationResult>
+    private readonly IUserRepository _userRepository;
+
+    public CreateUserCommandHandler(IUserRepository userRepository)
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-
-        public CreateUserCommandHandler(UserManager<ApplicationUser> userManager)
-        {
-            _userManager = userManager;
-        }
-
-        //public async Task<Result<string>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
-        public Task<ValidationResult> Handle(CreateUserCommand request, CancellationToken cancellationToken)
-        {
-            var user = new ApplicationUser { UserName = request.Email, Email = request.Email };
-            var result = await _userManager.CreateAsync(user, request.Password);
-
-            if (result.Succeeded)
-            {
-                // Handle successful signup
-                return Result<string>.Success("User created successfully.");
-            }
-
-            // Handle signup failure
-            //return Result<string>.Fail(result.Errors.FirstOrDefault()?.Description);
-        }
+        _userRepository = userRepository;
     }
 
-}
+    //public async Task<UserModel> IRequestHandler<CreateUserCommand, UserModel>.Handle(CreateUserCommand request, CancellationToken cancellationToken)
+    public async Task<UserModel> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+    {
+        if (request.Password != request.ConfirmPassword)
+        {
+            throw new Exception("Passwords do not match.");
+        }
+
+        string hashedPassword = PasswordHasher.HashPassword(request.Password);
+
+        var user = new UserModel
+        { 
+            FirstName = request.FirstName,
+            LastName = request.LastName,
+            Email = request.Email,
+            Password = hashedPassword
+        };
+
+        // Add user to the database through repository
+        await _userRepository.AddAsync(user);
+
+        return user;
+
+        //var userDto = new UserDto(user);
+        //return userDto;
+    }
+} 

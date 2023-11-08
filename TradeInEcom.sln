@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ad.TradeIn.AppDomain", "Ad.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ad.TradeIn.Infrastructure", "Ad.TradeIn.Infrastructure\Ad.TradeIn.Infrastructure.csproj", "{755D7099-0CF5-40E4-9767-654B27D23120}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ad.TradeIn.Common", "Ad.TradeIn.Commons\Ad.TradeIn.Common.csproj", "{301F9A26-1905-4A5D-8128-E4E40182ED1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ad.TradeIn.Commons", "Ad.TradeIn.Commons\Ad.TradeIn.Commons.csproj", "{301F9A26-1905-4A5D-8128-E4E40182ED1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ad.TradeIn.Entities", "Ad.TradeIn.Entities\Ad.TradeIn.Entities.csproj", "{C0BF4D07-FFAF-4E89-8BFC-2E095ED5A283}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ad.TradeIn.Entities", "Ad.TradeIn.Entities\Ad.TradeIn.Entities.csproj", "{C0BF4D07-FFAF-4E89-8BFC-2E095ED5A283}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

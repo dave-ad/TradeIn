@@ -1,32 +1,35 @@
 ﻿namespace Ad.TradeIn.CoreApi.Controllers.Users
 {
-    [Route("api/{[controler]")]
-    [ApiController]
-    public class CreateUserController :  ControllerBase
+    public class CreateUserController :  BaseApiController
     {
-        private readonly APIDbContext _context;
+        //private readonly IMediator _mediator;
 
-        public CreateUserController(APIDbContext context)
+        public CreateUserController(IMediator mediator)
         {
-            _context = context;
+            //_mediator = mediator;
         }
 
-        // POST: api/SignUp
-        [HttpPost("signup")]
+        // POST: api/CreateUser/signup
+        [HttpPost]
+        [Route("signup")]
+        [ProducesDefaultResponseType]
         public async Task<IActionResult> SignUp([FromBody] CreateUserCommand command)
         {
             try
             {
-                var validationResult = await _mediator.Send(command);
+                var UserModel = Mediator.Send(command);
 
-                if (validationResult.IsValid)
+                if (UserModel != null)
                 {
+                    // Using DTO
+                    //var userDto = new UserDto(userModel);
+
                     return Ok(new { Message = "User registered successfully" });
                 }
                 else
                 {
                     // Handle validation errors
-                    return BadRequest(new { Errors = validationResult.Errors });
+                    return BadRequest(new { Error = "Failed to reister user." });
                 }
             }
             catch (Exception ex)

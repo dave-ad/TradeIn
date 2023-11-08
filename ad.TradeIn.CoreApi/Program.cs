@@ -1,22 +1,44 @@
-
-using FluentAssertions.Common;
+using Microsoft.Extensions.DependencyInjection;
+using Ad.TradeIn.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+var config = builder.Configuration;
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddTransient<IRequestHandler<CreateUserCommand, UserModel>, CreateUserCommandHandler>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddInfrastructureServices(builder.Configuration);
 
-//  Dependency Injectin of DbContext Class
-builder.Services.AddDbContext<APIDbContext>(
-    Options => Options
-    .UseSqlServer(builder.Configuration
-    .GetConnectionString("DevConnection")));
+
 
 var app = builder.Build();
+
+// Get Services required for migrations
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<APIDbContext>();
+
+        if (context.Database.IsSqlServer())
+        {
+            context.Database.Migrate();
+        }
+
+    }
+    catch (Exception ex)
+    {
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+
+        logger.LogError(ex, "An error occurred while migrating or seeding the database.");
+
+        throw;
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
