@@ -1,4 +1,4 @@
-﻿namespace Ad.TradeIn.AppDomain.Users;
+﻿namespace Ad.TradeIn.AppDomain.Users.Auth;
 public class CreateUserCommand : IRequest<UserModel>
 {
     //public string UserId { get; set; }

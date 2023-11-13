@@ -1,5 +1,4 @@
 ﻿namespace Ad.TradeIn.AppDomain.Users;
-
 public class UserModel
 {
     // Account Information

@@ -1,5 +1,3 @@
-using Microsoft.Extensions.DependencyInjection;
-using Ad.TradeIn.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
@@ -8,11 +6,9 @@ var config = builder.Configuration;
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddTransient<IRequestHandler<CreateUserCommand, UserModel>, CreateUserCommandHandler>();
+builder.Services.AddTransient<IRequestHandler<CreateUserCommand, UserModel>, RegisterCommandHandler>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddInfrastructureServices(builder.Configuration);
-
-
 
 var app = builder.Build();
 

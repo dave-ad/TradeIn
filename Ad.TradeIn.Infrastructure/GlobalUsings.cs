@@ -5,3 +5,5 @@ global using Ad.TradeIn.Entities.Data;
 global using Ad.TradeIn.Commons.Enums;
 global using Microsoft.Extensions.Configuration;
 global using MediatR;
+global using Ad.TradeIn.Infrastructure.Data.Repositories;
+global using System.Reflection;

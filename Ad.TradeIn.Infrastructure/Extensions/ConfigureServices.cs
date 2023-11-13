@@ -1,8 +1,4 @@
-﻿using Ad.TradeIn.Infrastructure.Data.Repositories;
-using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
-
-namespace Ad.TradeIn.Infrastructure.Extensions;
+﻿namespace Ad.TradeIn.Infrastructure.Extensions;
 
 public static class ConfigureServices
 {
@@ -15,12 +11,6 @@ public static class ConfigureServices
         }
         else
         {
-            //  Dependency Injectin of DbContext Class
-            //builder.Services.AddDbContext<APIDbContext>(
-            //    Options => Options
-            //    .UseSqlServer(builder.Configuration
-            //    .GetConnectionString("DevConnection")));
-
             services.AddDbContext<APIDbContext>(
                 options => options
             //.UseLazyLoadingProxies()

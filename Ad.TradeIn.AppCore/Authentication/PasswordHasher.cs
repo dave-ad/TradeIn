@@ -8,7 +8,6 @@ public class PasswordHasher
         //byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
         byte[] hashedBytes = SHA256.HashData(Encoding.UTF8.GetBytes(password));
 
-        // Convert byte array to a string
         StringBuilder builder = new();
         for (int i = 0; i < hashedBytes.Length; i++)
         {
