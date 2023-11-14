@@ -2,7 +2,8 @@
 
 
 namespace Ad.TradeIn.AppDomain.Users.Auth;
-public class LoginCommand : IRequest<Result<LoginResponseDTO>>
+//public class LoginCommand : IRequest<Result<LoginResponseDTO>>
+public class LoginCommand 
 {
     public string Email { get; set; }
     public string Password { get; set; }

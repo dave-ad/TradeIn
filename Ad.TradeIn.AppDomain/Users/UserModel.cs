@@ -16,22 +16,16 @@ public class UserModel
     [Column(TypeName = "nvarchar(250)")]
     public string LastName { get; set; }
 
-    [Column(TypeName = "nvarchar(50)")]
-    [EmailAddress]
-    public string Email { get; set; }
-
     [Column(TypeName = "nvarchar(10)")]
     public string Gender { get; set; }
     public DateFormat DOB { get; set; }
 
     [Column(TypeName = "int")]
     public int PhoneNumber { get; set; }
-    
-    [PasswordPropertyText]
-    public string Password { get; set; }
-    
-    [PasswordPropertyText]
-    public string ConfirmPassword { get; set; }
+
+    // Navigation Properties
+    //public ICollection<Order> Orders { get; set; } = new List<Order>();
+    //public ICollection<Product> Products { get; set; } = new List<Product>();
 
     // Shipping Information
     public string Address { get; set; }
@@ -47,5 +41,6 @@ public class UserModel
 
     // Order History
     public int OrderId { get; set; }
-    public string OrderDetails { get; set; }      
+    public string OrderDetails { get; set; }
+
 }
