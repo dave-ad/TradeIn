@@ -1,6 +1,4 @@
-﻿using Ad.TradeIn.AppDomain.Users.Auth;
-
-namespace Ad.TradeIn.AppCore.Users.Auth;
+﻿namespace Ad.TradeIn.AppCore.Users.Auth;
 
 public class RegisterCommandHandler : IRequestHandler<CreateUserCommand, UserModel>
 {
@@ -20,20 +18,22 @@ public class RegisterCommandHandler : IRequestHandler<CreateUserCommand, UserMod
 
         string hashedPassword = PasswordHasher.HashPassword(request.Password);
 
-        var user = new UserModel
-        {
-            FirstName = request.FirstName,
-            LastName = request.LastName,
-            Email = request.Email,
-            Password = hashedPassword
-        };
+        //var user = new UserModel
+        //{
+        //    FirstName = request.FirstName,
+        //    LastName = request.LastName,
+        //    Email = request.Email,
+        //    Password = hashedPassword
+        //};
 
         // Add user to the database through repository
-        await _userRepository.AddAsync(user);
+        //await _userRepository.AddAsync(user);
 
-        return user;
+        //return user;
 
         //var userDto = new UserDto(user);
         //return userDto;
+
+        return null;
     }
 }

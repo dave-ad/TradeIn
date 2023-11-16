@@ -14,7 +14,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.12">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.13">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ad.TradeIn.AppCore\Ad.TradeIn.AppCore.csproj" />
-    <ProjectReference Include="..\Ad.TradeIn.Entities\Ad.TradeIn.Entities.csproj" />
     <ProjectReference Include="..\Ad.TradeIn.Infrastructure\Ad.TradeIn.Infrastructure.csproj" />
   </ItemGroup>
 

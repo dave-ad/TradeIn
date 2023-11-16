@@ -1,4 +1,6 @@
-﻿namespace Ad.TradeIn.Infrastructure.Extensions;
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace Ad.TradeIn.Infrastructure.Extensions;
 
 public static class ConfigureServices
 {
@@ -13,12 +15,25 @@ public static class ConfigureServices
         {
             services.AddDbContext<APIDbContext>(
                 options => options
-            //.UseLazyLoadingProxies()
             .UseSqlServer(configuration
             .GetConnectionString("DevConnection"),
                     b => b
                     .MigrationsAssembly(typeof(APIDbContext).Assembly.FullName)));
+
+
+            //services.AddDbContext<APIDbContext>(
+            //options => options
+            //    .UseSqlServer(configuration
+            //    .GetConnectionString("DevConnection"),
+            //        b => b
+            //        .MigrationsAssembly("Ad.TradeIn.CoreApi")));
+
         }
+
+        services.AddIdentity<UserModel, IdentityRole>()
+            .AddDefaultTokenProviders()
+            .AddEntityFrameworkStores<APIDbContext>();
+
 
         //services.AddScoped<IMediator, Mediator>();
         services.AddScoped<IUserRepository, UserRepository>();

@@ -1,5 +1,5 @@
 ﻿namespace Ad.TradeIn.AppDomain.Users;
-public class UserModel
+public class UserModel : IdentityUser
 {
     // Account Information
     [Key]
@@ -24,8 +24,8 @@ public class UserModel
     public int PhoneNumber { get; set; }
 
     // Navigation Properties
-    //public ICollection<Order> Orders { get; set; } = new List<Order>();
-    //public ICollection<Product> Products { get; set; } = new List<Product>();
+    public ICollection<Order> Orders { get; set; } = new List<Order>();
+    public ICollection<Product> Products { get; set; } = new List<Product>();
 
     // Shipping Information
     public string Address { get; set; }
@@ -42,5 +42,5 @@ public class UserModel
     // Order History
     public int OrderId { get; set; }
     public string OrderDetails { get; set; }
-
+    //public object Orders { get; set; }
 }

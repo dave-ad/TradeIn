@@ -11,17 +11,17 @@ public class UserRepository : IUserRepository
 
     public async Task<UserModel> GetByIdAsync(int userId)
     {
-        return await _context.User.FindAsync(userId);
+        return await _context.Users.FindAsync(userId);
     }
 
     public async Task<UserModel> GetByEmailAsync(string email)
     {
-        return await _context.User.FirstOrDefaultAsync(u => u.Email == email);
+        return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
     }
 
     public async Task AddAsync(UserModel user)
     {
-        await _context.User.AddAsync(user);
+        await _context.Users.AddAsync(user);
         await _context.SaveChangesAsync();
     }
 
@@ -33,10 +33,10 @@ public class UserRepository : IUserRepository
 
     public async Task DeleteAsync(int userId)
     {
-        var user = await _context.User.FindAsync(userId);
+        var user = await _context.Users.FindAsync(userId);
         if (user != null)
         {
-            _context.User.Remove(user);
+            _context.Users.Remove(user);
             await _context.SaveChangesAsync();
         }
     }
