@@ -1,0 +1,9 @@
+﻿global using Microsoft.VisualBasic;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel.DataAnnotations.Schema;
+global using MediatR;
+global using Ad.TradeIn.AppDomain.Users;
+global using Ad.TradeIn.AppDomain.Products;
+global using Microsoft.AspNetCore.Identity;
+global using Ad.TradeIn.AppDomain.Orders;

@@ -1,0 +1,9 @@
+﻿global using Microsoft.EntityFrameworkCore;
+global using Ad.TradeIn.AppDomain.Users;
+global using Microsoft.EntityFrameworkCore.Migrations;
+global using Ad.TradeIn.Entities.Data;
+global using Microsoft.EntityFrameworkCore.Infrastructure;
+global using Ad.TradeIn.AppDomain.Orders;
+global using Ad.TradeIn.AppDomain.Products;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
