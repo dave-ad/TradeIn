@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿
+using Ad.TradeIn.AppDomain.Users.Auth;
+using FluentValidation;
+using Microsoft.AspNetCore.Identity;
 
 namespace Ad.TradeIn.Infrastructure.Extensions;
 
@@ -40,6 +43,8 @@ public static class ConfigureServices
 
         //services.AddMediatR(typeof(CreateUserCommand));
         services.AddMediatR(x => x.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+
+
 
         return null;
 

@@ -20,8 +20,8 @@ public class UserModel : IdentityUser
     public string Gender { get; set; }
     public DateFormat DOB { get; set; }
 
-    [Column(TypeName = "int")]
-    public int PhoneNumber { get; set; }
+    //[Column(TypeName = "int")]
+    public string PhoneNumber { get; set; }
 
     // Navigation Properties
     public ICollection<Order> Orders { get; set; } = new List<Order>();
@@ -42,5 +42,4 @@ public class UserModel : IdentityUser
     // Order History
     public int OrderId { get; set; }
     public string OrderDetails { get; set; }
-    //public object Orders { get; set; }
 }
